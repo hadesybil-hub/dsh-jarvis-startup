@@ -47,7 +47,7 @@ const serveApp='\t\t\tif (url.pathname === "/" || url.pathname === "/index.html"
 const serveReplace=`\t\t\tif (url.pathname === "/" || url.pathname === "/index.html") { const cold = request.method === "GET" && !jarvisColdBootClaimed; if (request.method === "GET") jarvisColdBootClaimed = true; return serveWebDocument(request, join(resources.dsh, "node_modules", "@deepseek-ai", "dsh-web-frontend", "dist"), cold); }
 \t\t\tif (url.pathname.startsWith("/assets/") || ["/favicon.svg", "/manifest.webmanifest"].includes(url.pathname)) return serveWebDocument(request, join(resources.dsh, "node_modules", "@deepseek-ai", "dsh-web-frontend", "dist"));`;
 main=once(main,serveApp,serveReplace);
-main=once(main,'\t\tmainWindow = window;','\t\tmainWindow = window;\n\t\twindow.once("ready-to-show", () => { if (!quitting && !window.isDestroyed() && !isMandatory() && welcomeWindow === undefined) window.show(); });');
+main=once(main,'\t\tmainWindow = window;','\t\tmainWindow = window;\n\t\twindow.once("ready-to-show", () => { if (!quitting && !window.isDestroyed() && !isMandatory() && welcomeWindow === undefined) { window.maximize(); window.show(); } });');
 main=once(main,'\t\twidth: 1280,','\t\tbackgroundColor: "#01070e",\n\t\twidth: 1280,');
 const config=JSON.parse(fs.readFileSync(path.join(__dirname,'defaults.json'),'utf8'));
 config.bootWithInitialization=true;if(options.name)config.identity=options.name;

@@ -1,0 +1,25 @@
+{
+  "name": "dsh-jarvis-startup",
+  "version": "0.1.0",
+  "private": true,
+  "description": "JARVIS-inspired DSH cold-start overlay with initialization handoff and rollback",
+  "type": "module",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "build:native": "node native-patch.cjs build",
+    "check:native": "node native-patch.cjs check",
+    "install:native": "node native-patch.cjs install",
+    "restore:native": "node native-patch.cjs restore",
+    "pack:plugin": "node package-plugin.cjs"
+  },
+  "dependencies": {
+    "@electron/asar": "4.2.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hadesybil-hub/dsh-jarvis-startup.git"
+  }
+}
